@@ -1,0 +1,48 @@
+# SPyTS 
+## Simple Python Twitter Scraper
+
+This implements a simple twitter scraper using tweepy. It's quick to 
+deploy, small enough to hack if you need different behavior. It's intended 
+for basic research purposes, like assembling corpora. 
+
+## Setup
+
+Install Python 2.7: https://www.python.org/downloads/
+Install tweepy: http://www.tweepy.org/
+Get all associated files for SPyTS:
+    * config_example.txt - an example config file (it's JSON)
+    * patience.py   - Stuff for... waiting.
+    * spyts.py      - This is the one you actually run
+    * the_signal.py - A wrapper for tweepy/API stuff
+
+You'll need four keys for using the Twitter API. They change crap all the
+time, though, so you'll have to look up exactly what do to get them. They
+should be:
+    * consumer_key
+    * consumer_secret
+    * access_token
+    * access_token_secret
+
+You get them at by creating a new app: https://apps.twitter.com/
+Add these to your config file. 
+
+While you're there, set your queries (must be a list, but if you wanna
+just issue one, make a list of one), output (can be "pickle" or "json"),
+and maximum number of tweets.
+
+## Running 
+Use:
+python spyts.py config.txt
+
+where config.txt is the json file with your keys and queries.
+
+## Notes
+For each query you add, SPyTS adds one minute to the wait time. This is 
+so you don't go and exhaust your API rate limits.
+
+## Reference
+
+For a scholarly reference, please refer to the paper that spawned this:
+
+Sierra, S. & Simonson, D. (2014) Gender and cool solidarity in Mexican Spanish colloquial phrases. In the Proceedings of New Ways of Analyzing Variation(NWAV) 43, Chicago, IL.
+
