@@ -31,7 +31,7 @@ def cycle(string):
 queries = config["queries"]
 tweets = []
 ids = set()
-while len(tweets) < config["maximum"]:
+while True:
     pause = patience.in_minutes(len(queries))
     #try:
     #retrieve
@@ -57,14 +57,18 @@ while len(tweets) < config["maximum"]:
 
     print
     print
-
+    
+    if len(tweets) > config["maximum"]: break
     patience.wait(pause)
     print "Running..."
 
 #output data
-if config["output"] == "pickle":
+# always dump the pickle, as a backup
+pprint(tweets)
+dump(tweets, open("OUTPUT_TWEETS.pkl","wb"))
+if config["output"] == "json":
     pass
-elif config["output"] == "json":
+elif config["output"] == "csv":
     pass
 else: 
     print "Probably should have told you this before, but your output"
