@@ -45,6 +45,37 @@ def DICT(pooi):
 
     return pooi.__dict__
     
+crap = ["_api"]
+dictify = lambda k,x: DICT(x)
+def spew(x):
+    print x
+    return x
+
+fix_technique = {"author":     dictify, 
+                 "user":       dictify,
+                 #"created_at": lambda k,x: x[k].iso_format()}
+                 "created_at": lambda k,x: x.isoformat() 
+                                            if "isoformat" in dir(x) else x}
+fix_order = [("author",),
+             ("user",),
+             ("created_at",),
+             ("author", "created_at"),
+             ("user", "created_at"),
+            ]
+def clean_data(data):
+    data = [DICT(d) for d in data]
+    [[d.__delitem__(c) for c in crap] for d in data]
+    for d in data:
+        for F in fix_order:
+            #this bit traverses the dictionaries to the point of change
+            cursor = d
+            for k in F[:-1]:
+                cursor = cursor[k]
+            # this applies the change to the right spot
+            cursor[F[-1]] = fix_technique[F[-1]](F[-1], cursor[F[-1]])
+
+                
+    return data
 
 ####################
 # Formatted Output #

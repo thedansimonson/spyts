@@ -23,6 +23,11 @@ con = the_signal.init(config)
 get = lambda s: the_signal.query(con, s)
 get_ids = lambda D: set([d["id"] for d in D])
 
+def cycle(string):
+    "Fetch data cycle."
+    data = the_signal.clean_data(get(string))
+    return data
+
 queries = config["queries"]
 tweets = []
 ids = set()
@@ -30,7 +35,7 @@ while len(tweets) < config["maximum"]:
     pause = patience.in_minutes(len(queries))
     #try:
     #retrieve
-    new_tweets = sum(map(output.cycle, queries), [])
+    new_tweets = sum(map(cycle, queries), [])
 
     #filter
     new_ids = get_ids(new_tweets)
