@@ -46,7 +46,7 @@ def DICT(pooi):
     return pooi.__dict__
     
 crap = ["_api"]
-dictify = lambda k,x: DICT(x)
+dictify = lambda k,x: DICT(x)["_json"]
 def spew(x):
     print x
     return x

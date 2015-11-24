@@ -11,6 +11,7 @@ import sys
 from pickle import dump
 import json
 import output
+import datetime
 
 # This is a really awful way to store credentials.
 # Originally, they were hard-coded into the script, so this is 
@@ -65,18 +66,17 @@ while True:
 #output data
 # always dump the pickle, as a backup
 pprint(tweets)
-dump(tweets, open("OUTPUT_TWEETS.pkl","wb"))
+session_id = datetime.datetime.now()
+dump(tweets, open("OUTPUT_TWEETS_%s.pkl"%session_id,"wb"))
+
 if config["output"] == "json":
-    pass
+    output.json(tweets, session_id)
 elif config["output"] == "csv":
+    pass
+elif config["output"] == "pickle":
     pass
 else: 
     print "Probably should have told you this before, but your output"
     print "format is unrecognized. I'm just gonna dump the output as"
     print "json."
-
-    data = json.dumps(tweets)
-    open("emergency_dump.json","w").write(data)
-
-    print "See emergency_dump.json for output."
-
+    print
