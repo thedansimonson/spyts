@@ -72,7 +72,7 @@ dump(tweets, open("OUTPUT_TWEETS_%s.pkl"%session_id,"wb"))
 if config["output"] == "json":
     output.json(tweets, session_id)
 elif config["output"] == "csv":
-    pass
+    output.csv(tweets, session_id) 
 elif config["output"] == "pickle":
     pass
 else: 

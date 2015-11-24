@@ -5,13 +5,14 @@ import pickle as pkl
 import json as jsonlib
 import the_signal
 from pprint import pprint
+import csv as csvlib
 
-# TEMP FIX, but it works
+#TODO: TEMP FIX, but it works
 MUST_DELETE = ["retweeted_status",
                "place", #need to unpack properly
                "_json", #redundant info
               ]
-def json(tweets, session_id, keep = [], remove = []): 
+def json(tweets, session_id): 
     print "Dumping json..."
     for t in tweets:
         for k in MUST_DELETE:
@@ -21,4 +22,27 @@ def json(tweets, session_id, keep = [], remove = []):
     open("OUTPUT_%s.json"%session_id,"w").write(data)
 
 
+def csv(tweets, session_id):
+    print "Dumping csv..."
+    for t in tweets:
+        for k in MUST_DELETE:
+            if k in t: del t[k]
+    
+    for t in tweets:
+        for flatten in ["user", "author", "entities"]:
+            if flatten in t:
+                for k in t[flatten]:
+                    t[flatten+"_"+k] = t[flatten][k]
+                del t[flatten]
+        
 
+    fstream = open("OUTPUT_%s.csv"%session_id,"w")
+    headers = sorted(list(tweets[0]))
+    print headers
+    writer = csvlib.DictWriter(fstream, fieldnames = headers)
+
+    writer.writeheader()
+    for t in tweets:
+        t = dict((k,v.encode("utf-8") if unicode(v) is v else v) for k,v in t.items())
+        t = dict((k,v) for k,v in t.items() if k in headers)
+        writer.writerow(t)
