@@ -60,7 +60,8 @@ while True:
     print
     
     if len(tweets) > config["maximum"]: break
-    patience.wait(pause)
+    try: patience.wait(pause)
+    except KeyboardInterrupt: break #safe escape with break
     print "Running..."
 
 #output data
