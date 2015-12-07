@@ -13,9 +13,6 @@ import json
 import output
 import datetime
 
-# This is a really awful way to store credentials.
-# Originally, they were hard-coded into the script, so this is 
-# a little better. 
 config_filename = sys.argv[1]
 config = json.loads(open(config_filename).read())
 con = the_signal.init(config)
@@ -34,32 +31,37 @@ tweets = []
 ids = set()
 while True:
     pause = patience.in_minutes(len(queries))
-    #try:
-    #retrieve
-    new_tweets = sum(map(cycle, queries), [])
+    try:
+        #retrieve
+        new_tweets = sum(map(cycle, queries), [])
 
-    #filter
-    new_ids = get_ids(new_tweets)
-    new_tweets = [n for n, i in zip(new_tweets, new_ids) if i not in ids]
+        #filter
+        new_ids = get_ids(new_tweets)
+        new_tweets = [n for n, i in zip(new_tweets, new_ids) if i not in ids]
 
-    #retain
-    ids |= set(new_ids)
-    tweets += new_tweets
+        #retain
+        ids |= set(new_ids)
+        tweets += new_tweets
 
-    print "Cycle complete."
-    print "Total found ids: "+str(len(tweets))
-    print "new ids: "+str(len(new_tweets))
-    print "Next cycle at "+str(pause)
-    """
+        print "Cycle complete."
+        print "Total found ids: "+str(len(tweets))
+        print "new ids: "+str(len(new_tweets))
+        print "Next cycle at "+str(pause)
+        
     except Exception as e:
+        print "Exception raised during request."
         print e
         print sys.exc_info()[0]
-    """
-
+        
+        
+        
     print
     print
     
     if len(tweets) > config["maximum"]: break
+
+
+
     try: patience.wait(pause)
     except KeyboardInterrupt: break #safe escape with break
     print "Running..."
