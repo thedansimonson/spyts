@@ -59,8 +59,11 @@ while True:
     print
     
     if len(tweets) > config["maximum"]: break
-
-
+    
+    print "Dumping backup... DO NOT BREAK RIGHT NOW."
+    dump(tweets, open("BACKUP_TWEETS.pkl", "wb"))
+    print "Backup complete. See cycle info above."
+    print "You may safely break right now, until the next cycle begins."
 
     try: patience.wait(pause)
     except KeyboardInterrupt: break #safe escape with break
@@ -68,7 +71,7 @@ while True:
 
 #output data
 # always dump the pickle, as a backup
-pprint(tweets)
+#pprint(tweets)
 session_id = datetime.datetime.now()
 dump(tweets, open("OUTPUT_TWEETS_%s.pkl"%session_id,"wb"))
 
