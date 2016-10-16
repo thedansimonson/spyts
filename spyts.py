@@ -95,12 +95,15 @@ while True:
         output_data(tweets)
         tweets = []
 
-    
+
+    #########################
+    # Start the Wait Period #
+    #########################
+
+    cycle_counter += 1
     print "You may safely break right now, until the next cycle begins."
     print "*"*50
     print
-
-    cycle_counter += 1
     try: patience.wait(pause)
     except KeyboardInterrupt: break #safe escape with break
     print "Running..."
