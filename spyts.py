@@ -83,7 +83,7 @@ while True:
     print
     
     if config["maximum"] > 0 and len(tweets) > config["maximum"]: break
-
+    
     if "backup" in config and cycle_counter % config["backup"] == 0: 
         print "Dumping backup... DO NOT BREAK RIGHT NOW."
         dump(tweets, open("BACKUP_TWEETS.pkl", "wb"))
@@ -91,7 +91,8 @@ while True:
         print
     
     if "tweets_per_file" in config and len(tweets) > config["tweets_per_file"]:
-        print "Chunk complete."
+        print "Chunk complete. Dumping and emptying tweet cache."
+        print "DO NOT BREAK RIGHT NOW."
         output_data(tweets)
         tweets = []
 
@@ -108,7 +109,7 @@ while True:
     except KeyboardInterrupt: break #safe escape with break
     print "Running..."
 
-print "Terminal dump initiated."
+print "Terminal dump initiated. DO NOT BREAK RIGHT NOW."
 output_data(tweets)
 print "Complete."
 
