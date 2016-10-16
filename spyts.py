@@ -72,7 +72,7 @@ while True:
 #output data
 # always dump the pickle, as a backup
 #pprint(tweets)
-session_id = datetime.datetime.now()
+session_id = str(datetime.datetime.now()).replace(" ",".")
 dump(tweets, open("OUTPUT_TWEETS_%s.pkl"%session_id,"wb"))
 
 if config["output"] == "json":
