@@ -1,9 +1,12 @@
 # SPyTS 
 ## Simple Python Twitter Scraper
 
-This implements a simple twitter scraper using tweepy. It's quick to 
-deploy, small enough to hack if you need different behavior. It's intended 
-for basic research purposes, like assembling corpora. 
+This implements a simple twitter scraper using tweepy. In particular, it tries
+to squeeze as much life as possible out of the limited free API requests that
+Twitter allows--distributing them through time as evenly as possible. 
+
+It's quick to deploy, small enough to hack if you need different behavior. 
+It's intended for basic research purposes, like assembling corpora.
 
 ## Setup
 
