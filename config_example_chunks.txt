@@ -1,0 +1,12 @@
+{
+    "consumer_key": "whateveryougetfromTwitterGoesHere",
+    "consumer_secret": "whateveryougetfromTwitterGoesHere",
+    "access_token": "whateveryougetfromTwitterGoesHere",
+    "access_token_secret": "whateveryougetfromTwitterGoesHere",
+    "queries": ["#thanksObama", "no mames"],
+    "output": "pickle",
+    "tweets_per_file": 10000,
+    "backup": 10,
+    "maximum": -1
+}
+    

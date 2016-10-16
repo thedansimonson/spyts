@@ -36,6 +36,26 @@ python spyts.py config.txt
 
 where config.txt is the json file with your keys and queries.
 
+## Other Config Options
+
+The `consumer_key`, `consumer_secret`, `access_token`, and 
+`access_token_secret` are required for scraping tweets. 
+Other options are below.
+
+`queries` (required): list of strings. Queries executed on the API. 
+
+`maximum` (required): integer. Number of tweets, in excess of, to stop scraping.
+If less than zero, then it scrapes indefinitely.
+
+`tweets_per_file` (optional): integer. Number of tweets, in excess of, to dump
+the files currently held in ram, reset the cache, and resume.
+Default behavior: only save at end (excluding back-ups, if enabled)
+
+`backup` (optional): Integer. Frequency (in cycles) to back-up tweets cached 
+in ram at. 
+Default behavior: do not back-up.
+
+
 ## Notes
 For each query you add, SPyTS adds one minute to the wait time. This is 
 so you don't go and exhaust your API rate limits.
