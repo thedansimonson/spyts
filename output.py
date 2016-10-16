@@ -38,7 +38,6 @@ def csv(tweets, session_id):
 
     fstream = open("OUTPUT_%s.csv"%session_id,"w")
     headers = sorted(list(tweets[0]))
-    print headers
     writer = csvlib.DictWriter(fstream, fieldnames = headers)
 
     writer.writeheader()
