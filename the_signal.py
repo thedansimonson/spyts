@@ -107,7 +107,7 @@ def clean_brut(tweet_dict):
     # More repeat info
     if tweet_dict["author"]["id"] == tweet_dict["user"]["id"]:
         del tweet_dict["user"]
-        tweet_dict["user"] = "see 'author'"
+        tweet_dict["user"] = {"redundant": "see 'author'"}
 
     return tweet_dict
 
