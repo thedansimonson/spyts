@@ -62,6 +62,10 @@ while True:
         #filter
         new_ids = get_ids(new_tweets)
         new_tweets = [n for n, i in zip(new_tweets, new_ids) if i not in ids]
+        
+        # reduce memory load (if requested)
+        if "arbitrary_clean" in config and config["arbitrary_clean"]:
+            new_tweets = map(the_signal.clean_brut, new_tweets)
 
         #retain
         ids |= set(new_ids)

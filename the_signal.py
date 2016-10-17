@@ -78,6 +78,44 @@ def clean_data(data):
     return data
 
 
+###################
+# Data Lightening #
+###################
+# 
+
+
+
+def clean_brut(tweet_dict):
+    """Some brute force data cleaning. Might generalize later.
+    WARNING: Deletes quote retweets, because spyts doesn't handle them 
+    properly yet. You've been warned. 
+    """
+
+    # About half the inflation
+    del tweet_dict["_json"]
+    if "retweeted_status" in tweet_dict: del tweet_dict["retweeted_status"]
+    
+    # Remove all this junk, in both cases
+    for person in ["author","user"]:
+        if "entities" in tweet_dict[person]:
+            del tweet_dict[person]["entities"]
+        profile_crap = [k for k in tweet_dict[person] if "profile" in k]
+        for k in profile_crap:
+            del tweet_dict[person][k]
+
+    
+    # More repeat info
+    if tweet_dict["author"]["id"] == tweet_dict["user"]["id"]:
+        del tweet_dict["user"]
+        tweet_dict["user"] = "see 'author'"
+
+    return tweet_dict
+
+
+
+
+
+
 ####################
 # Formatted Output #
 ####################
