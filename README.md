@@ -11,7 +11,9 @@ It's intended for basic research purposes, like assembling corpora.
 ## Setup
 
 Install Python 2.7: https://www.python.org/downloads/
+
 Install tweepy: http://www.tweepy.org/
+
 Get all associated files for SPyTS:
     * config_example.txt - an example config file (it's JSON)
     * patience.py   - Stuff for... waiting.
@@ -35,8 +37,7 @@ and maximum number of tweets.
 
 ## Running 
 Use:
-python spyts.py config.txt
-
+`python spyts.py config.txt`
 where config.txt is the json file with your keys and queries.
 
 ## Other Config Options
@@ -45,18 +46,15 @@ The `consumer_key`, `consumer_secret`, `access_token`, and
 `access_token_secret` are required for scraping tweets. 
 Other options are below.
 
-`queries` (required): list of strings. Queries executed on the API. 
-
-`maximum` (required): integer. Number of tweets, in excess of, to stop scraping.
-If less than zero, then it scrapes indefinitely.
-
-`tweets_per_file` (optional): integer. Number of tweets, in excess of, to dump
-the files currently held in ram, reset the cache, and resume.
-Default behavior: only save at end (excluding back-ups, if enabled)
-
-`backup` (optional): Integer. Frequency (in cycles) to back-up tweets cached 
-in ram at. 
-Default behavior: do not back-up.
+* `queries` (required): list of strings. Queries executed on the API. 
+* `maximum` (required): integer. Number of tweets, in excess of, to stop scraping. 
+   If less than zero, then it scrapes indefinitely.
+* `tweets_per_file` (optional): integer. Number of tweets, in excess of, to dump
+   the files currently held in ram, reset the cache, and resume.
+   Default behavior: only save at end (excluding back-ups, if enabled)
+* `backup` (optional): Integer. Frequency (in cycles) to back-up tweets cached 
+   in ram at. 
+   Default behavior: do not back-up.
 
 
 ## Notes
