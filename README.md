@@ -16,19 +16,19 @@ Install tweepy: http://www.tweepy.org/
 
 Get all associated files for SPyTS:
 
-    * config_example.txt - an example config file (it's JSON)
-    * patience.py   - Stuff for... waiting.
-    * spyts.py      - This is the one you actually run
-    * the_signal.py - A wrapper for tweepy/API stuff
+ * config_example.txt - an example config file (it's JSON)
+ * patience.py   - Stuff for... waiting.
+ * spyts.py      - This is the one you actually run
+ * the_signal.py - A wrapper for tweepy/API stuff
 
 You'll need four keys for using the Twitter API. They change crap all the
 time, though, so you'll have to look up exactly what do to get them. They
 should be:
 
-    * consumer_key
-    * consumer_secret
-    * access_token
-    * access_token_secret
+ * consumer_key
+ * consumer_secret
+ * access_token
+ * access_token_secret
 
 You get them at by creating a new app: https://apps.twitter.com/
 Add these to your config file. 
