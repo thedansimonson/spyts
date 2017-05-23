@@ -15,6 +15,7 @@ Install Python 2.7: https://www.python.org/downloads/
 Install tweepy: http://www.tweepy.org/
 
 Get all associated files for SPyTS:
+
     * config_example.txt - an example config file (it's JSON)
     * patience.py   - Stuff for... waiting.
     * spyts.py      - This is the one you actually run
@@ -23,6 +24,7 @@ Get all associated files for SPyTS:
 You'll need four keys for using the Twitter API. They change crap all the
 time, though, so you'll have to look up exactly what do to get them. They
 should be:
+
     * consumer_key
     * consumer_secret
     * access_token
