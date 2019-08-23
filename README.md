@@ -10,7 +10,8 @@ It's intended for basic research purposes, like assembling corpora.
 
 ## Setup
 
-Install Python 2.7: https://www.python.org/downloads/
+Migrated from Python 2 to 3. There shouldn't be anything too sensitive
+to any specific version now unless tweepy throws a fit.
 
 Install tweepy: http://www.tweepy.org/
 
