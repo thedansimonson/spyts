@@ -42,10 +42,10 @@ def output_data(stuff):
     elif config["output"] == "pickle":
         pass
     else: 
-        print "Probably should have told you this before, but your output"
-        print "format is unrecognized. Nevertheless, a serialized python pickle"
-        print "has been dumped in its stead."
-        print
+        print("Probably should have told you this before, but your output")
+        print("format is unrecognized. Nevertheless, a serialized python pickle")
+        print("has been dumped in its stead.")
+        print()
 
 queries = config["queries"]
 tweets = []
@@ -53,11 +53,11 @@ ids = set()
 cycle_counter = 0
 while True:
     pause = patience.in_minutes(len(queries))
-    print "Cycle",cycle_counter,"initiated."
-    print "Duration to next cycle:",str(pause)
+    print("Cycle",cycle_counter,"initiated.")
+    print("Duration to next cycle:",str(pause))
     try:
         #retrieve
-        new_tweets = sum(map(cycle, queries), [])
+        new_tweets = sum(list(map(cycle, queries)), [])
 
         #filter
         new_ids = get_ids(new_tweets)
@@ -65,38 +65,38 @@ while True:
         
         # reduce memory load (if requested)
         if "arbitrary_clean" in config and config["arbitrary_clean"]:
-            new_tweets = map(the_signal.clean_brut, new_tweets)
+            new_tweets = list(map(the_signal.clean_brut, new_tweets))
 
         #retain
         ids |= set(new_ids)
         tweets += new_tweets
 
-        print "Cycle",cycle_counter,"complete."
-        print "Total found ids: "+str(len(tweets))
-        print "new ids: "+str(len(new_tweets))
-        print "Next cycle at "+str(pause)
+        print("Cycle",cycle_counter,"complete.")
+        print("Total found ids: "+str(len(tweets)))
+        print("new ids: "+str(len(new_tweets)))
+        print("Next cycle at "+str(pause))
 
     except Exception as e:
-        print "Exception raised during request."
-        print e
-        print sys.exc_info()[0]
+        print("Exception raised during request.")
+        print(e)
+        print(sys.exc_info()[0])
         
         
         
-    print
-    print
+    print()
+    print()
     
     if config["maximum"] > 0 and len(tweets) > config["maximum"]: break
     
     if "backup" in config and cycle_counter % config["backup"] == 0: 
-        print "Dumping backup... DO NOT BREAK RIGHT NOW."
+        print("Dumping backup... DO NOT BREAK RIGHT NOW.")
         dump(tweets, open("BACKUP_TWEETS.pkl", "wb"))
-        print "Backup complete. See cycle info above."
-        print
+        print("Backup complete. See cycle info above.")
+        print()
     
     if "tweets_per_file" in config and len(tweets) > config["tweets_per_file"]:
-        print "Chunk complete. Dumping and emptying tweet cache."
-        print "DO NOT BREAK RIGHT NOW."
+        print("Chunk complete. Dumping and emptying tweet cache.")
+        print("DO NOT BREAK RIGHT NOW.")
         output_data(tweets)
         tweets = []
 
@@ -106,14 +106,14 @@ while True:
     #########################
 
     cycle_counter += 1
-    print "You may safely break right now, until the next cycle begins."
-    print "*"*50
-    print
+    print("You may safely break right now, until the next cycle begins.")
+    print("*"*50)
+    print()
     try: patience.wait(pause)
     except KeyboardInterrupt: break #safe escape with break
-    print "Running..."
+    print("Running...")
 
-print "Terminal dump initiated. DO NOT BREAK RIGHT NOW."
+print("Terminal dump initiated. DO NOT BREAK RIGHT NOW.")
 output_data(tweets)
-print "Complete."
+print("Complete.")
 

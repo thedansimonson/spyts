@@ -48,7 +48,7 @@ def DICT(pooi):
 crap = ["_api"]
 dictify = lambda k,x: DICT(x)["_json"]
 def spew(x):
-    print x
+    print(x)
     return x
 
 fix_technique = {"author":     dictify, 
@@ -125,11 +125,11 @@ def dump(d):
     d.author and d.user (usually the same--different if RT?)
     """
     pprint(d.__dict__)
-    print "\nAuthor"
+    print("\nAuthor")
     pprint(d.author.__dict__)
-    print "\nUser"
+    print("\nUser")
     pprint(d.user.__dict__)
-    print "-"*50
+    print("-"*50)
 
 
 def csv_dump(data, fname):
