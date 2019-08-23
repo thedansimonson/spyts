@@ -13,7 +13,7 @@ MUST_DELETE = ["retweeted_status",
                "_json", #redundant info
               ]
 def json(tweets, session_id): 
-    print "Dumping json..."
+    print("Dumping json...")
     for t in tweets:
         for k in MUST_DELETE:
             if k in t: del t[k]
@@ -23,7 +23,7 @@ def json(tweets, session_id):
 
 
 def csv(tweets, session_id):
-    print "Dumping csv..."
+    print("Dumping csv...")
     for t in tweets:
         for k in MUST_DELETE:
             if k in t: del t[k]
@@ -42,6 +42,6 @@ def csv(tweets, session_id):
 
     writer.writeheader()
     for t in tweets:
-        t = dict((k,v.encode("utf-8") if unicode(v) is v else v) for k,v in t.items())
-        t = dict((k,v) for k,v in t.items() if k in headers)
+        t = dict((k,v.encode("utf-8") if str(v) is v else v) for k,v in list(t.items()))
+        t = dict((k,v) for k,v in list(t.items()) if k in headers)
         writer.writerow(t)
