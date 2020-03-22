@@ -1,0 +1,4 @@
+# Version 0.4.0
+* CHANGELOG added
+* extended tweets now retrieved -- tweet text in "full_text" instead of "text"
+* "quoted_status" purged from output now (could recursively explode if expanded)
