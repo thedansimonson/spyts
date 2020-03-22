@@ -30,7 +30,7 @@ def init(config):
 def query(twit, q):
     "Issues a simple query, with some wrapping."
     q = "".join(['"', q,'"'])
-    data = twit.search(q)
+    data = twit.search(q, tweet_mode = "extended")
     return data
 
 #############
