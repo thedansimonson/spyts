@@ -9,6 +9,7 @@ import csv as csvlib
 
 #TODO: TEMP FIX, but it works
 MUST_DELETE = ["retweeted_status",
+               "quoted_status",
                "place", #need to unpack properly
                "_json", #redundant info
               ]
