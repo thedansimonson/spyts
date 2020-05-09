@@ -1,3 +1,7 @@
+# Version 1.0.0
+* Refactored all modules into spyts module.
+* config now parsed as yaml.
+
 # Version 0.4.0
 * CHANGELOG added
 * extended tweets now retrieved -- tweet text in "full_text" instead of "text"
