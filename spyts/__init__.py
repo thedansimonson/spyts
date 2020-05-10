@@ -5,12 +5,12 @@
 # Dan Simonson, 2015, 2016, 2020
 
 from pprint import pprint
-import patience
-import the_signal
+from . import patience
+from . import the_signal
 import sys
 from pickle import dump
 import yaml
-import output
+from . import output
 import datetime
 
 
