@@ -3,7 +3,7 @@ For saving results from spyts.
 """
 import pickle as pkl
 import json as jsonlib
-import the_signal
+from . import the_signal
 from pprint import pprint
 import csv as csvlib
 
