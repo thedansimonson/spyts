@@ -22,7 +22,7 @@ def cycle(string):
 
 
 
-def output_data(stuff):
+def output_data(tweets):
     "Dump the data appropriately."
     
     # pickle is always output as a backup
@@ -90,7 +90,9 @@ def main_loop(config):
             print("Backup complete. See cycle info above.")
             print()
         
-        if "tweets_per_file" in config and len(tweets) > config["tweets_per_file"]:
+        if ("tweets_per_file" in config and 
+            len(tweets) > config["tweets_per_file"]):
+
             print("Chunk complete. Dumping and emptying tweet cache.")
             print("DO NOT BREAK RIGHT NOW.")
             output_data(tweets)
